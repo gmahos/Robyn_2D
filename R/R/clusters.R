@@ -71,7 +71,7 @@ robyn_clusters <- function(input, dep_var_type,
   ignore <- c("solID", "mape", "decomp.rssd", "nrmse", "nrmse_test", "nrmse_train", "nrmse_val", "pareto")
 
   # Auto K selected by less than 5% WSS variance (convergence)
-  min_clusters <- 3
+  min_clusters <- 4
   limit_clusters <- min(nrow(df) - 1, 30)
   if ("auto" %in% k) {
     cls <- tryCatch(
