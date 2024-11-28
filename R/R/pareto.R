@@ -555,11 +555,11 @@ robyn_pareto <- function(InputCollect, OutputModels,
 pareto_front <- function(xi, yi, pareto_fronts = 1, ...) {
   stopifnot(length(xi) == length(yi))
   d <- data.frame(xi, yi)
-  Dtemp <- D <- d[order(d$xi, d$yi, decreasing = FALSE), ]
+  Dtemp <- D <- d[order(d$yi, d$xi, decreasing = FALSE), ]
   df <- data.frame()
   i <- 1
   while (nrow(Dtemp) >= 1 & i <= max(pareto_fronts)) {
-    these <- Dtemp[which(!duplicated(cummin(Dtemp$yi))), ]
+    these <- Dtemp[which(!duplicated(cummin(Dtemp$xi))), ]
     these$pareto_front <- i
     df <- rbind(df, these)
     Dtemp <- Dtemp[!row.names(Dtemp) %in% row.names(these), ]
